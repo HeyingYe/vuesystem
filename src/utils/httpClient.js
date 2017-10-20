@@ -2,6 +2,7 @@
 import request from 'superagent'
 import router from 'router/index'
 import { Loading } from 'element-ui';
+import { Notification } from 'element-ui';
 // import jsonp from 'superagent-jsonp';
 
 const BASE_URl = process.env.BASE_URL;
@@ -24,10 +25,15 @@ const errorHandler = (err) => {
     str += err.response.statusText
     str += '<br/>请求路径：<br/>'
     str += err.response.error.url
-    $.alert(str, '请求错误');
+    Notification({
+        title: '请求错误',
+        message:str,
+        type:"error",
+        duration:2000
+    })
 }
 
-const HttpClient = {
+const httpClient = {
     get: (path, query) => new Promise((resolve, reject) => {
         if (!window.localStorage.getItem('access_token') && JSON.parse(err.response.text).msg == 'unauthorized') {
             router.push({ name: 'login' });

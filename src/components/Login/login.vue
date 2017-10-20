@@ -1,26 +1,65 @@
 <template>
 	<div class="login_bg">
 		<div class="loginBox">
-			<form >
+			<form id="loginForm">
 				<h3>login</h3>
 				<div class="logincell">
 					<i class="iconfont icon-accountfilling"></i>
-					<input type="text" class="username" name="username">
+					<input type="text" class="username" name="username" v-model="username" >
 				</div>
 				<div class="logincell">
 					<i class="iconfont icon-password"></i>
-					<input type="text" class="password" name="password">
+					<input type="text" class="password" name="password" v-model="password" >
 				</div>
 				<div class="logincell loginBtn">
-					<input type="button" value="login" class="login_btn">
+					<input type="button" value="login" class="login_btn" @click="login">
 				</div>
 			</form>
 		</div>
 	</div>
 </template>
 <script>
+	import $ from "jquery";
 	export default{
-		
+		name:"login",
+		data(){
+			return {
+				username:"",
+				password:""
+			}
+		},
+		methods:{
+			login:function(){
+				debugger;
+				if($("#loginForm").valid()){
+					this.$store.dispatch("login",{
+						username:this.username,
+						password:this.password
+					})
+				}
+			}
+		},
+		created(){
+			$("#loginForm").validate({
+				rules:{
+					username:{
+						required:true,
+						maxlenth:40
+					},
+					password:{
+						required:true,
+					}
+				},
+				messages:{
+					username:{
+						required:"username is required",
+					},
+					password:{
+						required:"password is required",
+					}
+				}
+			})
+		}
 	}
 </script>
 <style lang="scss" scoped>
