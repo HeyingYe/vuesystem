@@ -5,11 +5,11 @@
 				<h3>login</h3>
 				<div class="logincell">
 					<i class="iconfont icon-accountfilling"></i>
-					<input type="text" class="username" name="username" v-model="username" >
+					<input type="text" class="username" name="username" v-model="username">
 				</div>
 				<div class="logincell">
 					<i class="iconfont icon-password"></i>
-					<input type="text" class="password" name="password" v-model="password" >
+					<input type="password" class="password" name="password" v-model="password">
 				</div>
 				<div class="logincell loginBtn">
 					<input type="button" value="login" class="login_btn" @click="login">
@@ -25,12 +25,32 @@
 		data(){
 			return {
 				username:"",
-				password:""
+				password:"",
+				//验证规则
+				valid:{
+					rules:{
+						username:{
+							required:true,
+							maxlength:4
+						},
+						password:{
+							required:true,
+						}
+					},
+					messages:{
+						username:{
+							required:"username is required",
+							maxlength:"Username cannot exceed 4 lengths"
+						},
+						password:{
+							required:"password is required",
+						}
+					}
+				}
 			}
 		},
 		methods:{
 			login:function(){
-				debugger;
 				if($("#loginForm").valid()){
 					this.$store.dispatch("login",{
 						username:this.username,
@@ -39,26 +59,11 @@
 				}
 			}
 		},
-		created(){
-			$("#loginForm").validate({
-				rules:{
-					username:{
-						required:true,
-						maxlenth:40
-					},
-					password:{
-						required:true,
-					}
-				},
-				messages:{
-					username:{
-						required:"username is required",
-					},
-					password:{
-						required:"password is required",
-					}
-				}
-			})
+		mounted(){
+			this.$store.dispatch("valid",{
+				form:$("#loginForm"),
+				valid:this.valid
+			});
 		}
 	}
 </script>
@@ -110,6 +115,9 @@
 					line-height: 30px;
 					text-align: left;
 					margin-bottom: 15px;
+				}
+				.error{
+					border:1px solid red;
 				}
 			}
 		}

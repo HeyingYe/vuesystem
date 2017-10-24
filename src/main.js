@@ -9,8 +9,11 @@ import "element-ui/lib/theme-default/index.css";
 import ElementUI from "element-ui";
 
 //import $ from "jquery";
-import "assets/jquery-validation-1.15.0/dist/jquery.validate.js";
-import "assets/jquery-validation-1.15.0/dist/localization/messages_zh.js";
+import "assets/Validate/jquery.validate.js";
+import "assets/Validate/localization/messages_zh.js";
+
+import Template from "template";
+Template.init();
 
 Vue.config.productionTip = false
 

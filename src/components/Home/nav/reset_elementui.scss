@@ -1,0 +1,16 @@
+.nav {
+	.el-input__inner{
+		height: 40px;
+	}
+	.chooseLanguage .el-input__inner{
+		background: #3083eb;
+		border: 1px solid #3083eb;
+		color: #fff;
+		&:hover{
+			border: 1px solid #3083eb;
+		}
+	}
+	.selectWrapper .el-input{
+		width: 120px;
+	}
+}

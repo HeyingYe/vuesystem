@@ -13,6 +13,7 @@ export default {
 <style>
 @import "assets/style/reset.css";
 @import "assets/style/iconfont/index.css";
+@import "assets/style/reset_elementui.scss";
 html,body{
   width: 100%;
   height: 100%;
