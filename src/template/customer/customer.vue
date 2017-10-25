@@ -3,10 +3,10 @@
 		<el-row class="btnGroup">
 			<el-col :span="12" class="navSeat">
 			</el-col>
-			<el-col :span="12" class>
+			<el-col :span="12">
 				<el-input
 				  icon="search"
-				  v-model="name"
+				  v-model="searchName"
 				  :on-icon-click="handleIconClick">
 				</el-input>
 				<el-button type="primary">Reset</el-button>
@@ -29,8 +29,7 @@
 		  		</el-col>
 		  	</el-row>
 		  </el-col>
-		  <el-col :lg="6" :md="8" :sm="12" class="outsideCol"> 
-		  	<el-row class="insideRow" :gutter="10">
+		  <el-col :lg="6" :md="8" :sm="12" class="outsideCol"> <el-row class="insideRow" :gutter="10">
 		  		<el-col :span="8" class="insideCol">
 		  			<span>Phone</span>
 		  		</el-col>
@@ -50,9 +49,8 @@
 		  		</el-col>
 		  		<el-col :span="16" class="insideCol">
 			  		<el-select v-model="CustomerType" placeholder="请选择">
-					    <el-option label="Person">
-					    </el-option>
-					    <el-option label="Organization"></el-option>
+					    <el-option label="Person" value="1"></el-option>
+					    <el-option label="Organization" value="2"></el-option>
 					</el-select>
 		  		</el-col>
 		  	</el-row>
@@ -75,6 +73,7 @@
 		name:"customer",
 		data(){
 			return {
+				searchName:"",
 				name:"",
 				Phone:"",
 				CustomerType:"",

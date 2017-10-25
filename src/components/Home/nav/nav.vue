@@ -6,7 +6,7 @@
 		<div class="searchBox">
 			<el-input class="searchWrapper" placeholder="请输入内容" v-model="searchText">
 			    <el-select v-model="searchType" slot="prepend" class="selectWrapper" @change="selectType">
-			      <el-option v-for="(item,index) in searchData" :label="item.label" :value="item.value"></el-option>
+			      <el-option v-for="(item,index) in searchData" :label="item.label" :value="item.value" :key="index"></el-option>
 			    </el-select>
 			    <el-button slot="append" icon="search" @click="searchHandle"></el-button>
 			</el-input>
@@ -14,7 +14,7 @@
 		<div class="nav_right">
 			<div class="chooseLanguage">	
 				<el-select v-model="language" @change="chooseLanguage">
-					<el-option v-for="(item,index) in languageData" :label="item.label" :value="item.value">
+					<el-option v-for="(item,index) in languageData" :label="item.label" :value="item.value" :key="index">
 					</el-option>
 				</el-select>
 			</div>
@@ -24,7 +24,7 @@
 					    {{username}}<i class="el-icon-caret-bottom el-icon--right"></i>
 					  </span>
 				    <el-dropdown-menu slot="dropdown">
-					    <el-dropdown-item v-for="(value,key) in serviceData" :command="key">{{value}}</el-dropdown-item>
+					    <el-dropdown-item v-for="(value,key) in serviceData" :command="key" :key="key">{{value}}</el-dropdown-item>
 					</el-dropdown-menu>
 				</el-dropdown>
 				<img src="../../../assets/images/profile-avatar.jpg" height="140" width="140" alt="">
