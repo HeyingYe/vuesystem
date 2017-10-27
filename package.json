@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "element-ui": "^1.4.7",
     "jquery": "^3.2.1",
     "superagent": "^3.7.0",

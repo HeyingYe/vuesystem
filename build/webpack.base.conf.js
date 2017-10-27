@@ -3,14 +3,14 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-
+console.log("../../"+utils.assetsPath('img/[name].[hash:7].[ext]'))
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: ["babel-polyfill",'./src/main.js']
   },
   output: {
     path: config.build.assetsRoot,
@@ -48,8 +48,9 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 100000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          //name:'../../img/[name].[hash:7].[ext]'
         }
       },
       {
