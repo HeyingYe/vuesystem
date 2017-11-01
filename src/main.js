@@ -11,7 +11,8 @@ import ElementUI from "element-ui";
 //import $ from "jquery";
 import "assets/Validate/jquery.validate.js";
 import "assets/Validate/localization/messages_zh.js";
-
+import borwser from "utils/IE8.js";
+console.log(borwser)
 import Template from "template";
 Template.init();
 
